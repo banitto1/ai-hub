@@ -1,0 +1,11 @@
+node_modules/
+.next*/
+.data/
+.env*
+vendor/
+win-app/
+*.apk*
+*.exe
+*.p12
+*.key
+*.pem
