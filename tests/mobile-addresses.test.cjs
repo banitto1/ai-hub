@@ -1,0 +1,3 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),{listAddresses,isTailscale}=require('../desktop/mobile-addresses.cjs');
+test('only valid Tailscale range is accepted',()=>{for(const ip of ['100.64.0.1','100.127.255.254'])assert.equal(isTailscale(ip),true);for(const ip of ['100.63.255.255','100.128.0.1','100.64.256.1','evil','8.8.8.8'])assert.equal(isTailscale(ip),false);});
+test('Tailscale interface is preferred; unrelated CGNAT is excluded',()=>{const item=address=>({address,family:'IPv4',internal:false});assert.deepEqual(listAddresses({WiFi:[item('192.168.1.2')],Tailscale:[item('100.70.1.2')],Other:[item('100.80.1.2'),item('8.8.8.8')]}).map(x=>x.address),['100.70.1.2','192.168.1.2']);});

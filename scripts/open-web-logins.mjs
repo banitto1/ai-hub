@@ -1,0 +1,3 @@
+import {writeFileSync} from 'node:fs';import {randomBytes,createHash}from'node:crypto';
+const ticket=randomBytes(32).toString('hex');writeFileSync('.data/launch-'+createHash('sha256').update(ticket).digest('hex')+'.json',JSON.stringify({expiresAt:Date.now()+120000}));const base='http://127.0.0.1:3211';const r=await fetch(base+'/api/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticket})});const cookie=r.headers.getSetCookie()[0].split(';')[0];
+for(const provider of ['gemini','grok']){const r=await fetch(base+'/api/accounts',{method:'POST',headers:{'Content-Type':'application/json',Cookie:cookie},body:JSON.stringify({provider})});console.log(provider,r.status,await r.text());}

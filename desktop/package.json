@@ -1,0 +1,6 @@
+{
+  "name": "ai-hub-desktop",
+  "productName": "AI Hub",
+  "version": "0.3.0",
+  "main": "main.cjs"
+}

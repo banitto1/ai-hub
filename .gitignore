@@ -2,10 +2,16 @@ node_modules/
 .next*/
 .data/
 .env*
+!.env.example
 vendor/
 win-app/
+desktop-validation/
+android/build*/
 *.apk*
 *.exe
 *.p12
-*.key
 *.pem
+*.key
+*.log
+*.tsbuildinfo
+coverage/

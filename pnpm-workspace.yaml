@@ -1,0 +1,3 @@
+allowBuilds:
+  '@github/keytar': false
+  node-pty: false

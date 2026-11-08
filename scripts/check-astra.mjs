@@ -1,0 +1,5 @@
+import {CodexRPC} from '../lib/codex-rpc.mjs';
+import {mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+const rpc=new CodexRPC();const cwd=resolve('.data/chat-sandbox');mkdirSync(cwd,{recursive:true});
+try{await rpc.start();const t=await rpc.call('thread/start',{model:'gpt-6-astra',cwd,approvalPolicy:'never',sandbox:'read-only',ephemeral:true,baseInstructions:'Answer the user directly. Do not use tools.',config:{'mcp_servers':{},'features.apps':false,'features.shell_tool':false,'web_search':'disabled'}});const done=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Response timeout')),60000);rpc.on('notification',m=>{if(m.params?.threadId!==t.thread.id)return;if(m.method==='item/completed'&&m.params.item.type==='agentMessage')console.log('response',m.params.item.text);if(m.method==='turn/completed'){clearTimeout(timer);resolve(m.params.turn);}});});await rpc.call('turn/start',{threadId:t.thread.id,model:'gpt-6-astra',input:[{type:'text',text:'Ответь только: OK'}]});console.log(JSON.stringify(await done));}finally{rpc.close();}

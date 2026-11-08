@@ -1,0 +1,162 @@
+/* Measured against the installed Antigravity desktop, 2026-11-08. */
+:root{--bg:#101010;--sidebar:#1c1c1c;--panel:#202020;--border:#303030;--text:#ededed;--muted:#999;font-family:"Segoe UI",Arial,sans-serif;font-size:16px}
+.reference-shell{display:grid;grid-template-columns:280px minmax(0,1fr);height:100dvh;padding-top:30px;overflow:hidden;background:#101010}
+.reference-shell .ambient{display:none}
+.hub-menubar{position:fixed;inset:0 0 auto;height:30px;display:flex;gap:4px;align-items:center;padding:0 150px 0 9px;background:#1c1c1c;z-index:100;-webkit-app-region:drag;font-size:15px;color:#bababa}
+.hub-menubar button,.hub-menubar details{-webkit-app-region:no-drag}
+.hub-menubar>button,.hub-menubar summary{padding:5px 8px;background:none;cursor:pointer;list-style:none}
+.hub-menubar details>div{position:absolute;top:30px;min-width:210px;padding:5px;background:#252525;border:1px solid #3b3b3b;border-radius:6px;box-shadow:0 8px 25px #0008}
+.hub-menubar details>div button{display:block;width:100%;text-align:left;background:none;padding:9px;border-radius:4px}
+.hub-menubar button:hover,.hub-menubar summary:hover{background:#303030}
+.reference-shell .sidebar{position:relative;inset:auto;width:280px;height:100%;display:flex;flex-direction:column;background:#1c1c1c!important;border:0;border-right:1px solid #353535;border-radius:0;padding:0 7px;box-shadow:none;backdrop-filter:none;z-index:20}
+.reference-sidebar-tools{height:45px;display:flex;gap:9px;align-items:center;padding:0 6px;flex-shrink:0}
+.reference-sidebar-tools button{width:23px;height:26px;display:grid;place-items:center;background:none;color:#b5b5b5}
+.reference-sidebar-tools .hub-monogram{font-size:23px;font-weight:800;color:#eee;font-style:italic;margin-right:6px}
+.reference-shell .sidebar nav{display:flex;flex-direction:column;gap:5px;width:100%;padding:0;margin:0}
+.reference-shell .sidebar nav button{width:100%;height:40px;min-height:40px;display:flex;align-items:center;gap:9px;justify-content:flex-start;text-align:left;padding:0 9px;border-radius:5px;background:transparent;color:#ddd;font-size:15px;border:1px solid transparent}
+.reference-shell .sidebar nav button span{display:inline}
+.reference-shell .sidebar nav .reference-new{background:#2b2b2b;border-color:#414141}
+.reference-shell .sidebar nav button:hover{background:#303030}
+#hub-project-sidebar{min-height:0;flex:1;overflow:auto;margin-top:24px}
+.reference-shell .hub-history{width:100%;height:100%;min-height:0;padding:0 5px;gap:10px;background:transparent!important;backdrop-filter:none!important;border:0}
+.ag-sidebar-head,.hub-history>.ag-new-chat,.hub-history>small,.hub-footnote{display:none!important}
+.ag-rail-heading{font-size:14px;font-weight:400;letter-spacing:0;color:#999;padding:4px 2px}
+.ag-projects-box{background:none;border:0;padding:0;margin-bottom:14px}
+.ag-project-row{background:none!important;border:0!important}
+.ag-project-row>button:first-child{font-size:15px;padding:7px 2px;font-weight:400}
+.ag-rail-hint{font-size:14px;color:#777}
+.ag-mini-add{font-size:0;background:none;border:0}
+.ag-mini-add svg{width:15px;height:15px}
+.ag-rail-search{border:0;background:#242424;font-size:14px;padding:6px}
+.reference-settings{background:none;display:flex;gap:8px;align-items:center;padding:12px 8px;font-size:15px;text-align:left;margin-top:auto;flex-shrink:0}
+.reference-shell .main-column{margin:0;padding:0;min-width:0;height:100%;overflow:auto}
+.reference-shell .content-chat{height:100%;padding:0}
+.content-chat>.page-enter,.content-chat>.page-enter>div:not([hidden]){height:100%}
+[hidden]{display:none!important}
+.reference-shell .hub-layout,.reference-shell .hub-layout.with-aux{height:100%;min-height:0;grid-template-columns:minmax(0,1fr);background:#101010}
+.reference-shell .hub-layout.with-aux{grid-template-columns:minmax(0,1fr) 290px}
+.reference-shell .ag-canvas-header{height:46px;min-height:46px;background:#101010!important;backdrop-filter:none!important;box-shadow:none!important;border:0;padding:0 14px}
+.reference-breadcrumb{font-size:15px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#d8d8d8}
+.reference-breadcrumb span{margin:0 7px;color:#777}
+.ag-header-actions .icon-button{width:25px;height:25px}
+.reference-shell .hub-messages{padding:16px max(24px,calc((100% - 960px)/2));flex:1;min-height:0}
+.reference-shell .hub-welcome{min-height:0;height:100%;max-width:none;padding:0 0 12vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;background:radial-gradient(ellipse at 50% 0, #0d1a2080,transparent 65%)}
+.reference-mark{font-size:84px;font-weight:800;font-style:italic;line-height:1;color:#242a2d;user-select:none}
+.reference-shell .hub-welcome h2{font-size:28px;line-height:1.3;font-weight:400;letter-spacing:-.4px;margin:0;text-align:center}
+.reference-shell .hub-compose{width:calc(100% - 48px);max-width:960px;margin:0 auto 14px;padding:10px 10px 6px;border:1px solid #373737;border-radius:19px;background:#222!important;box-shadow:0 0 0 4px #1a1a1a,0 8px 24px #0003;backdrop-filter:none}
+.reference-shell .hub-compose textarea{min-height:34px;max-height:180px;padding:2px 0 8px;font-size:16px;background:none;border:0;line-height:1.6}
+.reference-shell .compose-actions{gap:7px;min-height:30px;padding:0;flex-wrap:nowrap}
+.compose-actions .attach-button{padding:4px;min-width:20px;background:none;border:0}
+.compose-actions .attach-button span,.compose-actions .ag-hint-btn,.compose-actions .model-trigger>svg:first-child{display:none}
+.compose-actions .model-trigger{font-size:14px;background:none;border:0;padding:3px 2px;min-height:24px;max-width:280px}
+.compose-actions .ag-mode-select{margin-left:auto;font-size:14px;max-width:150px;background:none;border:0}
+.compose-actions .ag-agent-pill{font-size:14px;gap:4px;padding:3px;background:transparent;border:0;box-shadow:none}
+.compose-actions .send-button{width:38px;height:38px;min-width:38px;border-radius:50%;background:#f4f4f4;color:#191919;margin-left:2px}
+.reference-shell .hub-message{max-width:none;font-size:14px;line-height:1.7;background:transparent;border:0;box-shadow:none;border-radius:0;padding:12px 0;margin:0 0 22px}
+.reference-shell .hub-message.user{background:#222;padding:12px 16px;border-radius:12px;margin-left:auto;max-width:85%;width:fit-content}
+.message-heading{font-size:14px;color:#999}
+.message-body{font-size:14px}
+.reference-shell .panel,.reference-shell .glass{background:#1c1c1c!important;backdrop-filter:none!important;box-shadow:none!important;border-color:#333}
+.reference-shell .work-controls{padding:5px 16px;font-size:15px;background:#171717;border-color:#292929}
+.reference-shell .work-controls input{font-size:15px}
+.reference-expand{display:none;position:fixed;top:35px;left:6px;z-index:40;background:#292929;border-radius:5px;padding:5px}
+.sidebar-collapsed{grid-template-columns:0 minmax(0,1fr)}
+.sidebar-collapsed .sidebar{display:none}
+.sidebar-collapsed .reference-expand{display:block}
+.sidebar-collapsed .ag-canvas-header{padding-left:42px}
+.reference-shell .hub-model-picker{background:#252525;border:1px solid #444;box-shadow:0 8px 32px #0008}
+.hub-model-picker .provider-switch{margin:5px;background:#1c1c1c;display:flex}
+
+/* Layout boundaries: every flex/grid child can shrink within its column. */
+.reference-shell{min-width:0;min-height:0;grid-template-rows:minmax(0,1fr)}
+.reference-shell .sidebar{align-items:stretch;min-width:0;min-height:0;overflow:hidden;flex:none}
+#hub-project-sidebar{width:100%;max-width:100%;min-width:0;overflow:hidden;display:flex;flex-direction:column}
+.reference-shell .hub-history{min-width:0;max-width:100%;height:100%;display:flex;flex-direction:column;align-items:stretch;overflow:hidden;flex:1}
+.reference-shell .hub-history>*{min-width:0;max-width:100%;flex-shrink:0}
+.reference-shell .hub-chat-list{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden}
+.reference-shell .ag-chat-item{width:100%;min-width:0;flex:0 0 auto}
+.reference-shell .ag-chat-item>button:first-child{font-size:15px;min-height:40px;width:0;max-width:none;flex:1;padding:8px}
+.reference-shell .ag-chat-item span,.reference-shell .ag-project-row span{display:block;min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reference-shell .ag-rail-hint{white-space:normal;overflow-wrap:anywhere;color:#aaa;font-size:14px;padding:4px;line-height:1.5}
+.reference-shell .ag-rail-heading{display:flex!important;flex-shrink:0;font-size:13px;min-height:30px;color:#aaa}
+.reference-shell .ag-projects-box{display:block!important;flex-shrink:0}
+.reference-shell .ag-project-list{max-height:24vh;overflow:auto}
+.reference-shell .ag-rail-search{display:block!important;width:100%;min-width:0;max-width:100%;height:36px;font-size:14px}
+.reference-shell .ag-mini-add{font-size:0;width:32px;height:30px;justify-content:center;flex-shrink:0}
+.reference-shell .reference-sidebar-tools{justify-content:flex-start;min-height:48px}
+.reference-shell .sidebar nav button{flex-direction:row;flex:none;justify-content:flex-start}
+.reference-shell .sidebar nav button span{max-width:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reference-shell .sidebar nav button svg{flex-shrink:0}
+.reference-shell .reference-settings{width:100%;min-height:44px;justify-content:flex-start}
+.reference-shell .hub-layout{display:grid;min-height:0}
+.reference-shell .hub-conversation{min-height:0;min-width:0}
+.reference-shell .compose-actions{flex-wrap:wrap;gap:8px}
+.reference-shell .compose-actions .model-trigger{min-width:0;max-width:min(330px,60%);min-height:36px}
+.reference-shell .compose-actions .model-trigger span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reference-shell .compose-actions .ag-mode-select{min-height:36px;flex-shrink:1}
+.reference-shell .compose-actions .ag-agent-pill{min-height:36px;white-space:nowrap}
+.reference-shell .hub-compose textarea{font-size:16px;min-height:54px}
+.reference-shell .hub-message,.reference-shell .message-body{font-size:16px;overflow-wrap:anywhere}
+.reference-shell .message-body pre{max-width:100%;overflow:auto}
+.reference-shell .hub-model-picker{max-width:100%;max-height:min(420px,60vh);overflow:auto}
+.reference-shell .hub-model-picker button{min-width:0;white-space:normal;overflow-wrap:anywhere;font-size:15px}
+.reference-shell .hub-welcome{padding-bottom:8vh}
+.reference-shell .content:not(.content-chat){max-width:1150px;width:100%;padding:28px}
+.reference-shell .page-title{min-width:0;flex-wrap:wrap}
+.reference-shell .settings-layout,.reference-shell .settings-body{min-width:0}
+.reference-shell .settings-nav{flex-wrap:wrap}
+.sidebar-collapsed .sidebar{display:none!important}
+.sidebar-collapsed .main-column{grid-column:2}
+.reference-backdrop{display:none}
+@media(max-width:900px){
+ .reference-shell{grid-template-columns:minmax(0,1fr);padding-top:34px}
+ .reference-shell .main-column,.sidebar-collapsed .main-column{grid-column:1}
+ .reference-shell .sidebar{display:flex;position:fixed!important;inset:34px auto 0 0!important;width:min(300px,85vw)!important;height:auto!important;flex-direction:column!important;align-items:stretch!important;padding:0 10px!important;z-index:60;border-right:1px solid #353535!important;box-shadow:20px 0 60px #0008}
+ .reference-shell .reference-expand{display:block;top:40px}
+ .reference-shell .reference-backdrop{display:block;position:fixed;inset:34px 0 0;background:#0006;z-index:55}
+ .reference-shell.sidebar-collapsed .reference-backdrop{display:none}
+ .reference-shell .hub-layout,.reference-shell .hub-layout.with-aux{display:grid;grid-template-columns:minmax(0,1fr)}
+ .reference-shell .ag-canvas-header{padding-left:46px;flex-wrap:nowrap}
+ .reference-shell .ag-header-actions{width:auto;flex-shrink:0}
+ .reference-shell .reference-breadcrumb{min-width:0;flex:1}
+ .reference-shell .content.content-chat{padding:0!important}
+ .reference-shell .content:not(.content-chat){padding:18px!important}
+ .reference-shell .hub-messages{padding:16px 18px}
+ .reference-shell .hub-compose{width:calc(100% - 24px);margin-bottom:12px;padding:10px}
+ .reference-shell .hub-welcome h2{font-size:24px;padding:0 12px}
+ .reference-shell .hub-welcome{padding-bottom:4vh}
+ .reference-shell .hub-history .ag-row-del{display:grid!important;opacity:1}
+ .reference-shell .hub-menubar{height:34px;padding:0 4px;gap:0;font-size:12px}
+ .hub-menubar>button,.hub-menubar summary{padding:6px}
+ .reference-shell .hub-menubar details>div{max-width:calc(100vw - 20px);left:10px;top:34px}
+ .reference-shell .compose-actions .model-trigger{max-width:calc(100% - 48px);flex:1 0 calc(100% - 48px)}
+ .reference-shell .compose-actions .ag-mode-select{margin-left:0;max-width:145px}
+ .reference-shell .compose-actions .send-button{margin-left:auto;min-height:40px;min-width:40px}
+ .reference-shell .compose-actions .ag-agent-pill{font-size:13px}
+ .reference-shell .reference-settings{min-height:48px}
+}
+
+/* Liquid glass: paint-only effects, unchanged layout boundaries. */
+html[data-glass=on] .reference-shell{background:#000}
+html[data-glass=on] .reference-shell .hub-layout{background:transparent}
+html[data-glass=on] .reference-shell .hub-welcome{background:transparent}
+html[data-glass=on] .reference-shell .sidebar,html[data-glass=on] .reference-shell .hub-menubar{background:rgba(16,16,16,.82)!important;backdrop-filter:blur(26px) saturate(135%)!important;-webkit-backdrop-filter:blur(26px) saturate(135%)!important;box-shadow:inset -1px 0 #ffffff14,inset 0 1px #ffffff12}
+html[data-glass=on] .reference-shell .hub-compose,html[data-glass=on] .reference-shell .hub-model-picker,html[data-glass=on] .reference-shell .panel,html[data-glass=on] .reference-shell .glass,html[data-glass=on] .reference-shell .ag-aux-pane{background:rgba(28,28,28,.72)!important;backdrop-filter:blur(24px) saturate(140%)!important;-webkit-backdrop-filter:blur(24px) saturate(140%)!important;border-color:#ffffff25;box-shadow:inset 0 1px 0 #ffffff25,inset 0 -1px 0 #ffffff08,0 12px 36px #0005!important}
+html[data-glass=on] .reference-shell .ag-canvas-header{background:#10101070!important;backdrop-filter:blur(16px)!important}
+html[data-glass=on] .reference-shell .hub-compose:focus-within{border-color:#ffffff55;box-shadow:inset 0 1px #ffffff33,0 0 0 3px #ffffff0b,0 14px 40px #0005!important}
+html[data-glass=on] .reference-shell .hub-compose textarea::placeholder{color:#a6a6a6}
+html[data-glass=on] .reference-shell .reference-mark{color:#88888855}
+@media(max-width:900px){html[data-glass=on] .reference-shell .sidebar{background:rgba(16,16,16,.94)!important}html[data-glass=on] .reference-shell .hub-compose{backdrop-filter:blur(12px)!important}}
+
+/* Pure black canvas in both appearance modes. */
+.reference-shell,.reference-shell .hub-layout{background:#000}
+.reference-shell .hub-welcome{background:transparent}
+html[data-glass=on] .reference-shell .hub-layout{background:transparent}
+
+/* Provider labels remain whole even in the narrow model popover. */
+.reference-shell .hub-model-picker .provider-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:auto;gap:4px;min-width:0}
+.reference-shell .hub-model-picker .provider-switch button{display:grid;grid-template-columns:8px minmax(0,1fr);gap:4px 7px;justify-content:start;align-items:center;padding:9px 8px;min-width:0;min-height:56px;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.reference-shell .hub-model-picker .provider-switch strong{font-size:14px;font-weight:600;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.reference-shell .hub-model-picker .provider-switch small{grid-column:2;font-size:11px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.reference-shell .hub-model-picker{min-width:min(400px,100%)}
+@media(max-width:480px){.reference-shell .hub-model-picker .provider-switch{grid-template-columns:1fr}.reference-shell .hub-model-picker .provider-switch button{grid-template-columns:8px 1fr auto;min-height:40px}.reference-shell .hub-model-picker .provider-switch small{grid-column:3}}

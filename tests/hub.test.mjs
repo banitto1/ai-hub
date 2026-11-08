@@ -1,0 +1,26 @@
+import { _electron as electron } from 'playwright';
+import {mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
+import {spawn} from 'node:child_process';
+import {tmpdir} from 'node:os';
+import {join,resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import assert from 'node:assert/strict';
+const temp=mkdtempSync(join(tmpdir(),'aihub-v3-')),google=join(temp,'google');mkdirSync(google);writeFileSync(join(google,'settings.json'),JSON.stringify({security:{auth:{selectedType:'oauth-personal'}}}));
+const env={...process.env,AI_HUB_PORT:'3222',AI_HUB_DATA_DIR:join(temp,'data'),AI_HUB_PROFILE_DIR:join(temp,'profile'),GEMINI_CLI_HOME:google,AI_HUB_TEST_IMPORT:pathToFileURL(resolve('tests/mock-accounts.mjs')).href};delete env.ELECTRON_RUN_AS_NODE;
+const app=await electron.launch({executablePath:resolve('win-app/AI Hub.exe'),env,timeout:60000});
+const pid=app.process().pid;
+try{const p=await app.firstWindow();await p.getByRole('heading',{name:'Один чат. Ваши модели.'}).waitFor({timeout:60000});await p.locator('.model-trigger').filter({hasText:'gpt-6-astra'}).waitFor({timeout:60000});
+ const errors=[];p.on('pageerror',e=>errors.push(e.message));console.log('accounts',await p.evaluate(()=>fetch('/api/accounts').then(r=>r.json())));
+ await p.locator('.attach-button input').setInputFiles({name:'context.txt',mimeType:'text/plain',buffer:Buffer.from('Project secret word is Cobalt.')});await p.locator('.file-chips').getByText('context.txt').waitFor();
+ await p.getByRole('textbox',{name:'Сообщение',exact:true}).fill('Read the attached file.');await p.getByRole('button',{name:'Отправить',exact:true}).click();await p.getByRole('button',{name:'Отправить',exact:true}).waitFor({timeout:60000});
+ assert.match(await p.locator('.hub-message.assistant').last().innerText(),/Cobalt/);
+ await p.locator('.model-trigger').click();await p.locator('.hub-model-picker').getByRole('button',{name:/Gemini 4 Argon/}).click();
+ await p.getByRole('textbox',{name:'Сообщение',exact:true}).fill('Continue using the shared context.');await p.getByRole('button',{name:'Отправить',exact:true}).click();await p.getByRole('button',{name:'Отправить',exact:true}).waitFor({timeout:60000});
+ assert.match(await p.locator('.hub-message.assistant').last().innerText(),/Cobalt/);assert.match(await p.locator('.hub-message.assistant').last().innerText(),/gemini-4-argon/);
+ await p.getByRole('combobox',{name:'Режим работы'}).selectOption('team');await p.locator('.model-trigger').click();await p.locator('.hub-model-picker').getByRole('button',{name:/gpt-6-astra/}).click();await p.locator('.model-trigger').click();
+ await p.getByRole('textbox',{name:'Сообщение',exact:true}).fill('Work together.');await p.getByRole('button',{name:'Отправить',exact:true}).click();await p.getByRole('button',{name:'Отправить',exact:true}).waitFor({timeout:60000});
+ assert.equal(await p.locator('.hub-message.assistant').count(),5);assert.match(await p.locator('.hub-message.assistant').last().innerText(),/synthesis/);
+ await p.getByRole('navigation').getByRole('button',{name:'Настройки',exact:true}).click();await p.getByRole('tab',{name:'Лимиты',exact:true}).click();await p.getByText('58% осталось',{exact:true}).waitFor();
+ assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+ assert.deepEqual(errors,[]);console.log('PASS: shared chat, text attachment, Astra -> Argon handoff, two model answers + synthesis, real-value quota rendering, no UI errors (controlled providers).');
+}catch(e){const p=app.windows()[0];if(p)console.log((await p.locator('body').innerText()).slice(-5000));throw e;}finally{await Promise.race([app.close(),new Promise(r=>setTimeout(r,8000))]).catch(()=>{});if(pid)spawn('taskkill.exe',['/PID',String(pid),'/T','/F'],{windowsHide:true,stdio:'ignore'});try{rmSync(temp,{recursive:true,force:true});}catch{}}
